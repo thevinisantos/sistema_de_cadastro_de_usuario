@@ -1,0 +1,14 @@
+Objetivo
+
+Criar um sistema em terminal para cadastrar, listar, buscar e remover usuários, com validação de dados e persistência em arquivo, utilizando lógica de programação pura em Python.
+
+----------------------------------------------------------------------------------------------------------
+
+Menu interativo:
+
+1.Cadastro de usuários
+2.Listagem de usuários
+3.Busca por nome
+4.Remoção de usuário
+5.Salvamento em arquivo (JSON)
+6.Validações básicas
