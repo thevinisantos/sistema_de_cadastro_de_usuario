@@ -6,6 +6,40 @@ def exibir_menu():
   print("4 - Remover usuário:")
   print("0 - Sair")
 
+def cadastrar_usuario(usuarios):
+  print("\n--- Cadastro de Usuário: ---")
+
+  while True:
+    nome = input("Digite o seu nome: ").strip()
+    if nome:
+      break
+    else:
+      print("O nome não pode ser vazio.")
+  
+  while True:
+    try:
+      idade = int(input("Digite a sua idade: "))
+      if idade > 0:
+        break
+      else:
+        print("Digite um número positivo.")     
+    except ValueError:
+      print("Digite um número válido para a idade.")
+
+  while True:
+    email = input("Digite o seu e-mail: ").strip()
+    if "@" in email and "." in email:
+      break
+    else:
+      print("E-mail inválido. Tente novamente.")
+
+  usuarios.append({
+    "nome": nome,
+    "idade": idade,
+    "e-mail": email,
+  })
+  print("Usuário cadastrado com êxito!")
+
 def main():
   usuarios = []
 
@@ -15,11 +49,11 @@ def main():
     try:
       opcao = int(input("Escolha a opção desejada: "))
     except ValueError:
-      print("Entrada inválida. Digite um número.")
-      break
+      print("Entrada inválida. Digite um número válido.")
+      continue
     
     if opcao == 1:
-      print("Cadastrar usuário")
+      cadastrar_usuario(usuarios)
     elif opcao == 2:
       print("Listar usuários:")
     elif opcao == 3:
