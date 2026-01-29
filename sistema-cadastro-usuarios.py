@@ -40,6 +40,16 @@ def cadastrar_usuario(usuarios):
   })
   print("Usuário cadastrado com êxito!")
 
+def listar_usuarios(usuarios):
+  print("\n--- Lista de Usuários: ---")
+
+  if not usuarios:
+    print("Nenhum usuário cadastrado!")
+    return
+  
+  for indice, usuario in enumerate(usuarios, start=1):
+    print(f"{indice}. Nome: {usuario["nome"]} | Idade: {usuario["idade"]} | E-mail: {usuario["e-mail"]}")
+  
 def main():
   usuarios = []
 
@@ -55,7 +65,7 @@ def main():
     if opcao == 1:
       cadastrar_usuario(usuarios)
     elif opcao == 2:
-      print("Listar usuários:")
+      listar_usuarios(usuarios)
     elif opcao == 3:
       print("Buscar usuário por nome:")
     elif opcao == 4:
