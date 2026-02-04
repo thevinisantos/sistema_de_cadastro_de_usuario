@@ -49,6 +49,34 @@ def listar_usuarios(usuarios):
   
   for indice, usuario in enumerate(usuarios, start=1):
     print(f"{indice}. Nome: {usuario["nome"]} | Idade: {usuario["idade"]} | E-mail: {usuario["e-mail"]}")
+
+def buscar_usuario(usuarios):
+  print("\n--- Buscar usuário por nome: ---")
+
+  if not usuarios:
+    print("Nenhum usuário cadastrado!")
+    return 
+  
+  while True:
+    usuarioNome = input("Digite o nome do usuário ou parte dele: ").strip().lower()
+    if usuarioNome:
+      break
+    else:
+      print("Erro: o nome não pode ser vazio")
+
+  encontrados = []
+
+  for usuario in usuarios:
+    if usuarioNome in usuario["nome"].lower():
+      encontrados.append(usuario)
+  
+  if not encontrados:
+    print("Nenhum usuário com esse nome cadastrado!")
+    return
+  
+  print("\n --- Usuários encontrados: ---")
+  for indice, usuario in enumerate(encontrados, start=1):
+    print(f"{indice}. Nome: {usuario["nome"]} | Idade: {usuario["idade"]} | E-mail: {usuario["e-mail"]}")
   
 def main():
   usuarios = []
@@ -67,7 +95,7 @@ def main():
     elif opcao == 2:
       listar_usuarios(usuarios)
     elif opcao == 3:
-      print("Buscar usuário por nome:")
+      buscar_usuario(usuarios)
     elif opcao == 4:
       print("Remover usuário:")
     elif opcao == 0:
