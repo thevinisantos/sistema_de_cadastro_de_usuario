@@ -48,7 +48,7 @@ def listar_usuarios(usuarios):
     return
   
   for indice, usuario in enumerate(usuarios, start=1):
-    print(f"{indice}. Nome: {usuario["nome"]} | Idade: {usuario["idade"]} | E-mail: {usuario["e-mail"]}")
+    print(f"{indice}. Nome: {usuario['nome']} | Idade: {usuario['idade']} | E-mail: {usuario['e-mail']}")
 
 def buscar_usuario(usuarios):
   print("\n--- Buscar usuário por nome: ---")
@@ -76,7 +76,7 @@ def buscar_usuario(usuarios):
   
   print("\n --- Usuários encontrados: ---")
   for indice, usuario in enumerate(encontrados, start=1):
-    print(f"{indice}. Nome: {usuario["nome"]} | Idade: {usuario["idade"]} | E-mail: {usuario["e-mail"]}")
+    print(f"{indice}. Nome: {usuario['nome']} | Idade: {usuario['idade']} | E-mail: {usuario['e-mail']}")
   
 def main():
   usuarios = []
