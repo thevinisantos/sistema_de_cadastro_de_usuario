@@ -77,7 +77,32 @@ def buscar_usuario(usuarios):
   print("\n --- Usuários encontrados: ---")
   for indice, usuario in enumerate(encontrados, start=1):
     print(f"{indice}. Nome: {usuario['nome']} | Idade: {usuario['idade']} | E-mail: {usuario['e-mail']}")
+
+def remover_usuario(usuarios):
+  print("\n--- Remover Usuários: ---")
+
+  if not usuarios:
+    print("Nenhum usuário cadastrado!")
+    return
   
+  listar_usuarios(usuarios)
+
+  while True:
+    try:
+     indice = int(input("\nDigite o número do índice do usuário: "))
+
+     if 1 <= indice <= len(usuarios):
+       usuario_removido = usuarios.pop(indice - 1)
+       print(f"\nUsuário: {usuario_removido['nome']} | Idade: {usuario_removido['idade']} | E-mail: {usuario_removido['e-mail']} removido com êxito!")
+       break
+     else:
+       print("Erro: número inválido. Escolha um número da lista.")
+       listar_usuarios(usuarios)
+
+    except ValueError:
+      print("Erro: digite um número válido.")
+      listar_usuarios(usuarios)
+    
 def main():
   usuarios = []
 
@@ -97,7 +122,7 @@ def main():
     elif opcao == 3:
       buscar_usuario(usuarios)
     elif opcao == 4:
-      print("Remover usuário:")
+      remover_usuario(usuarios)
     elif opcao == 0:
       print("Encerrando o sistema...")
       break
