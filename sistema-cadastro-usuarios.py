@@ -62,8 +62,12 @@ def listar_usuarios(usuarios):
     return
   
   for indice, usuario in enumerate(usuarios, start=1):
-    print(f"{indice}. Nome: {usuario['nome']} | Idade: {usuario['idade']} | E-mail: {usuario['e-mail']}")
-
+    print(
+      f"{indice}. Nome: {usuario['nome']} | "
+      f"Idade: {usuario['idade']} | "
+      f"E-mail: {usuario['e-mail']}"
+      )
+    
 def buscar_usuario(usuarios):
   print("\n--- Buscar usuário por nome: ---")
 
@@ -90,7 +94,11 @@ def buscar_usuario(usuarios):
   
   print("\n --- Usuários encontrados: ---")
   for indice, usuario in enumerate(encontrados, start=1):
-    print(f"{indice}. Nome: {usuario['nome']} | Idade: {usuario['idade']} | E-mail: {usuario['e-mail']}")
+    print(
+      f"{indice}. Nome: {usuario['nome']} | "
+      f"Idade: {usuario['idade']} | "
+      f"E-mail: {usuario['e-mail']}"
+      )
 
 def remover_usuario(usuarios):
   print("\n--- Remover Usuários: ---")
@@ -108,7 +116,11 @@ def remover_usuario(usuarios):
      if 1 <= indice <= len(usuarios):
        usuario_removido = usuarios.pop(indice - 1)
        salvar_usuarios(usuarios)
-       print(f"\nUsuário: {usuario_removido['nome']} | Idade: {usuario_removido['idade']} | E-mail: {usuario_removido['e-mail']} removido com êxito!")
+       print(
+         f"\nUsuário: {usuario_removido['nome']} | "
+         f"Idade: {usuario_removido['idade']} | " 
+         f"E-mail: {usuario_removido['e-mail']} removido com êxito!"
+         )
        break
      else:
        print("Erro: número inválido. Escolha um número da lista.")
