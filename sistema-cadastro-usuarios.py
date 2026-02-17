@@ -1,3 +1,16 @@
+import json
+
+def carregar_usuarios():
+  try:
+    with open("dados/usuarios.json", "r", encoding="utf-8") as arquivo:
+      return json.load(arquivo)
+  except FileNotFoundError:
+    []
+
+def salvar_usuarios(usuarios):
+  with open("dados/usuarios.json", "w", encoding="utf-8") as arquivo:
+    json.dump(usuarios, arquivo, ensure_ascii=False, indent=4)
+
 def exibir_menu():
   print("\n--- Sistema de Cadastro de Usuários ---\n")
   print("1 - Cadastrar usuário:")
@@ -38,6 +51,7 @@ def cadastrar_usuario(usuarios):
     "idade": idade,
     "e-mail": email,
   })
+  salvar_usuarios(usuarios)
   print("\nUsuário cadastrado com êxito!")
 
 def listar_usuarios(usuarios):
@@ -93,6 +107,7 @@ def remover_usuario(usuarios):
 
      if 1 <= indice <= len(usuarios):
        usuario_removido = usuarios.pop(indice - 1)
+       salvar_usuarios(usuarios)
        print(f"\nUsuário: {usuario_removido['nome']} | Idade: {usuario_removido['idade']} | E-mail: {usuario_removido['e-mail']} removido com êxito!")
        break
      else:
@@ -104,7 +119,7 @@ def remover_usuario(usuarios):
       listar_usuarios(usuarios)
     
 def main():
-  usuarios = []
+  usuarios = carregar_usuarios()
 
   while True:
     exibir_menu()
