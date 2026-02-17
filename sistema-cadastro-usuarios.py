@@ -5,7 +5,7 @@ def carregar_usuarios():
     with open("dados/usuarios.json", "r", encoding="utf-8") as arquivo:
       return json.load(arquivo)
   except FileNotFoundError:
-    []
+    return []
 
 def salvar_usuarios(usuarios):
   with open("dados/usuarios.json", "w", encoding="utf-8") as arquivo:
