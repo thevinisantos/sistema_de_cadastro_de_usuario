@@ -1,15 +1,20 @@
 import json
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+SAVE_TO = os.path.join(BASE_DIR, "dados", "usuarios.json")
 
 def carregar_usuarios():
   try:
-    with open("dados/usuarios.json", "r", encoding="utf-8") as arquivo:
+    with open(SAVE_TO, "r", encoding="utf-8") as arquivo:
       return json.load(arquivo)
-  except FileNotFoundError:
+  except (FileNotFoundError, json.JSONDecodeError):
     return []
 
 def salvar_usuarios(usuarios):
-  with open("dados/usuarios.json", "w", encoding="utf-8") as arquivo:
-    json.dump(usuarios, arquivo, ensure_ascii=False, indent=4)
+  os.makedirs(os.path.dirname(SAVE_TO), exist_ok=True)
+  with open(SAVE_TO, "w", encoding="utf-8") as arquivo:
+    json.dump(usuarios, arquivo, ensure_ascii=False, indent=2)
 
 def exibir_menu():
   print("\n--- Sistema de Cadastro de Usuários ---\n")
