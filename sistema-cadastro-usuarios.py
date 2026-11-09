@@ -32,7 +32,7 @@ def cadastrar_usuario(usuarios):
     if nome:
       break
     else:
-      print("Erro: o nome não pode ser vazio.")
+      print("ERRO: o nome não pode ser vazio.")
   
   while True:
     try:
@@ -40,16 +40,16 @@ def cadastrar_usuario(usuarios):
       if idade > 0:
         break
       else:
-        print("Erro: digite um número positivo.")     
+        print("ERRO: digite um número positivo.")     
     except ValueError:
-      print("Erro: digite um número válido para a idade.")
+      print("ERRO: digite um número válido para a idade.")
 
   while True:
     email = input("Digite o seu e-mail: ").strip()
     if "@" in email and "." in email:
       break
     else:
-      print("Erro: e-mail inválido. Tente novamente.")
+      print("ERRO: e-mail inválido. Tente novamente.")
 
   usuarios.append({
     "nome": nome,
@@ -85,7 +85,7 @@ def buscar_usuario(usuarios):
     if usuarioNome:
       break
     else:
-      print("Erro: o nome não pode ser vazio")
+      print("ERRO: o nome não pode ser vazio")
 
   encontrados = []
 
@@ -128,11 +128,11 @@ def remover_usuario(usuarios):
          )
        break
      else:
-       print("Erro: número inválido. Escolha um número da lista.")
+       print("ERRO: número inválido. Escolha um número da lista.")
        listar_usuarios(usuarios)
 
     except ValueError:
-      print("Erro: digite um número válido.")
+      print("ERRO: digite um número válido.")
       listar_usuarios(usuarios)
     
 def main():
@@ -144,22 +144,23 @@ def main():
     try:
       opcao = int(input("\nEscolha a opção desejada: "))
     except ValueError:
-      print("Erro: entrada inválida. Digite um número válido.")
+      print("\nERRO: entrada inválida. Digite um número válido.")
       continue
-    
-    if opcao == 1:
-      cadastrar_usuario(usuarios)
-    elif opcao == 2:
-      listar_usuarios(usuarios)
-    elif opcao == 3:
-      buscar_usuario(usuarios)
-    elif opcao == 4:
-      remover_usuario(usuarios)
-    elif opcao == 0:
-      print("Encerrando o sistema...")
-      break
-    else:
-      print("Erro: opção inexistente.")
+
+    match opcao:
+      case 1:
+        cadastrar_usuario(usuarios)
+      case 2:
+        listar_usuarios(usuarios)
+      case 3:
+        buscar_usuario(usuarios)
+      case 4:
+        remover_usuario(usuarios)
+      case 0:
+        print("\nEncerrando o sistema...")
+        break
+      case _: 
+        print("\nERRO: opção inexistente.")
 
 if __name__ == '__main__':
   main()
